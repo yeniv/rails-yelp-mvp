@@ -1,10 +1,17 @@
-<h1>All restaurants 🍔</h1>
-<%= link_to "Add new restaurant", new_restaurant_path, class: "btn btn-outline-primary" %>
-<br><br>
-
-  <% @restaurants.each do |restaurant| %>
-  <h4><%= link_to restaurant.name, restaurant_path(restaurant) %></h4>
-  <p><%= restaurant.category %></p>
-  <p><%= restaurant.address %></p>
-  <p><%= restaurant.phone_number %></p>
+<h1 class="display-2" style="text-align: center">All restaurants <br>
+🌮 🍔 🌭 🌯 🍕
+<%= link_to "Add new restaurant", new_restaurant_path, class: "btn btn-lg btn-primary" %>
+</h1>
+<% @restaurants.each do |restaurant| %>
+<div class="card text-white bg-dark mb-3">
+  <div class="card-body">
+    <h1><%= link_to restaurant.name, restaurant_path(restaurant) %>
+      <span class="badge badge-secondary"><%= restaurant.category %></span></h1>
+    <h4 class="card-title"><%= restaurant.phone_number %></h4>
+    <p class="card-text"><%= restaurant.address %></p>
+  </div>
+</div>
 <% end %>
+
+
+

@@ -1,18 +1,27 @@
-<div>
-  <h1><%= @restaurant.name %></h1>
-  <p><%= @restaurant.category %></p>
-  <p><%= @restaurant.address %></p>
-  <p><%= @restaurant.phone_number %></p>
-  <br>
-  <% @reviews.each_with_index do |review, index| %>
-  <p>Review <%= index + 1 %></p>
-  <p><%= review.content %></p>
-  <p><%= review.rating %> stars</p>
-  <% end %>
+<div class="card text-white bg-dark mb-3">
+  <div class="card-body">
+    <h1><%= @restaurant.name %> <span class="badge badge-secondary"><%= @restaurant.category %></span></h1>
+    <p class="card-text"><%= @restaurant.address %></p>
+    <p class="card-text"><%= @restaurant.phone_number %></p>
+    <br>
+    <span class="card-text">
+      <%= link_to "Review this restaurant", new_restaurant_review_path(@restaurant), class: "btn btn-primary" %>
+<%= link_to "Back to restaurants", restaurants_path, class: "btn btn-light" %>
+    </span>
+  </div>
 </div>
 
-<%= link_to "Review this restaurant", new_restaurant_review_path(@restaurant) %>
-<br>
-<%= link_to "Back to restaurants", restaurants_path %>
+<% @reviews.each_with_index do |review, index| %>
+<div class="card text-white bg-dark mb-3">
+  <div class="card-body">
+    <!-- <h4 class="card-title">Review <%= index + 1 %></h4> -->
+    <h3 class="card-text"><span class="badge badge-pill badge-light"><%= review.rating %> stars</span></h3>
+    <p class="card-text"><%= review.content %></p>
+  </div>
+</div>
+<% end %>
+
+
+
 
 
